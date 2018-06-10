@@ -1,4 +1,4 @@
-package com.alidemirsoy.tradingservice;
+package com.alidemirsoy.tradingservice.init;
 
 import com.alidemirsoy.tradingservice.configuration.InitialMarketDataProperties;
 import com.alidemirsoy.tradingservice.repository.FinancialAssetRepository;
@@ -22,6 +22,14 @@ public class DataInitializer implements ApplicationRunner {
     @Autowired
     ModelMapper modelMapper;
 
+    /**
+     * This method is executed only once during start-up
+     * and reads market information from the configuration,
+     * initializes randomly generated rate values and persist to database
+     * If the data is already initialized, then does nothing.
+     * @param args Unused.
+     * @author Ali Demirsoy
+     */
     @Override
     public void run(ApplicationArguments args) {
         //TODO javadoc yaz

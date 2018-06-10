@@ -19,6 +19,12 @@ public class DefaultUserAuthentication implements UserAuthentication {
         this.securityProperties = securityProperties;
     }
 
+    /**
+     * This method is for authenticating the default user credentials.
+     * Default user is determined in the configuration file.
+     * @param requestDto This has the username and password
+     * @return responseDto This has the Basic Authentication header content for the clients to use in further requests.
+     */
     @Override
     public AuthenticationResponseDto authenticate(AuthenticationRequestDto requestDto) {
         String username = requestDto.getUsername();
@@ -27,6 +33,8 @@ public class DefaultUserAuthentication implements UserAuthentication {
                 && password.equals(securityProperties.getPassword())) {
             AuthenticationResponseDto responseDto = new AuthenticationResponseDto();
             responseDto.setUsername(username);
+            //Return the whole Authorization header content
+            // so that when the implementation changes from Basic Auth to OAuth2, clients will not be effected
             responseDto.setToken("Basic " + Base64.encodeBase64String(String.format("%s:%s", username, password).getBytes()));
             return responseDto;
         }

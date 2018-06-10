@@ -2,7 +2,7 @@ spring:
   application.name: trading-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/devdb?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/devdb?useSSL=false&allowPublicKeyRetrieval=true
     username: dbuser
     password: dbpassword
     initialization-mode: always

@@ -50,12 +50,17 @@ public class FinancialAssetService {
         FinancialAsset existingAsset = optional.orElseThrow(() ->
                 new BadRequestException(String.format("Asset with id: %s does not exist!", id), "error.asset.notFound"));
 
-        if (existingAsset.getRate().doubleValue() - updateRequestDto.getSpread() <= 0) {
-            throw new BadRequestException("Spread value cannot be larger than the rate value", "error.spread.invalid");
-        }
+        validateSpread(updateRequestDto.getSpread(), existingAsset.getRate().doubleValue());
+
         existingAsset.setSpread(updateRequestDto.getSpread());
         existingAsset.setUpdateDate(LocalDateTime.now());
         FinancialAsset savedFinancialAsset = financialAssetRepository.save(existingAsset);
         return financialAssetResponseConverter.convert(savedFinancialAsset);
+    }
+
+    private void validateSpread(Double spread, Double rate) {
+        if (spread >= rate) {
+            throw new BadRequestException("Spread value cannot be larger than or equal to the rate value", "error.spread.invalid");
+        }
     }
 }

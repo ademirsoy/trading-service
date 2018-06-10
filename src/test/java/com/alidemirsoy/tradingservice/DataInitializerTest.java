@@ -1,12 +1,12 @@
 package com.alidemirsoy.tradingservice;
 
 import com.alidemirsoy.tradingservice.configuration.InitialMarketDataProperties;
+import com.alidemirsoy.tradingservice.init.DataInitializer;
 import com.alidemirsoy.tradingservice.repository.FinancialAssetRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.verification.Times;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;

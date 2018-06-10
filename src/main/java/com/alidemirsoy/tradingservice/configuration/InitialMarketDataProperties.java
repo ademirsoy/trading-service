@@ -11,6 +11,10 @@ import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Reads the list of symbols and the initial market values from configuration
+ * @author Ali Demirsoy
+ */
 @Data
 @Component
 @ConfigurationProperties("initialize")
