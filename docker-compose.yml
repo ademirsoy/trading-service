@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8080:8080
+    links:
+      - trading-service
+    depends_on:
+      - trading-service
   mysql:
     image: mysql:latest
     environment:
