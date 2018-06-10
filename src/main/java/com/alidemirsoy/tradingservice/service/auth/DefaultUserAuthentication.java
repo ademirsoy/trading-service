@@ -8,6 +8,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+
 @Data
 @Service
 public class DefaultUserAuthentication implements UserAuthentication {
