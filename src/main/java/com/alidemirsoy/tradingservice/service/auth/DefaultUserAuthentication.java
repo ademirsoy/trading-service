@@ -30,6 +30,6 @@ public class DefaultUserAuthentication implements UserAuthentication {
             responseDto.setToken("Basic " + Base64.encodeBase64String(String.format("%s:%s", username, password).getBytes()));
             return responseDto;
         }
-        throw new BadCredentialsException("Invalid credentials!");
+        throw new BadCredentialsException("Invalid credentials, username or password is not correct!");
     }
 }

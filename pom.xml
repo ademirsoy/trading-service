@@ -23,6 +23,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<dockerfile-maven-version>1.4.3</dockerfile-maven-version>
+		<lombok.version>1.16.22</lombok.version>
+		<modelmapper.version>2.0.0</modelmapper.version>
 	</properties>
 
 	<dependencies>
@@ -53,15 +55,13 @@
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
-			<version>2.0.0</version>
+			<version>${modelmapper.version}</version>
 		</dependency>
-
-		<!--org.hibernate:hibernate-java8:5.1.0.Final-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.22</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -104,28 +104,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-			<!--<plugin>-->
-				<!--<groupId>com.spotify</groupId>-->
-				<!--<artifactId>dockerfile-maven-plugin</artifactId>-->
-				<!--<version>${dockerfile-maven-version}</version>-->
-				<!--<executions>-->
-					<!--<execution>-->
-						<!--<id>default</id>-->
-						<!--<goals>-->
-							<!--<goal>build</goal>-->
-							<!--<goal>push</goal>-->
-						<!--</goals>-->
-					<!--</execution>-->
-				<!--</executions>-->
-				<!--<configuration>-->
-					<!--<repository>spotify/foobar</repository>-->
-					<!--<tag>${project.version}</tag>-->
-					<!--<buildArgs>-->
-						<!--<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>-->
-					<!--</buildArgs>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
 
 		</plugins>
 	</build>

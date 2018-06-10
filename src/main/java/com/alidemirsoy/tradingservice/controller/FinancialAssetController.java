@@ -35,7 +35,7 @@ public class FinancialAssetController {
     }
 
     @PostMapping
-    public FinancialAssetResponseDto create(@RequestBody FinancialAssetCreateRequestDto createRequestDto) {
+    public FinancialAssetResponseDto create(@RequestBody @Validated FinancialAssetCreateRequestDto createRequestDto) {
         FinancialAssetResponseDto asset = financialAssetService.createNewAsset(createRequestDto);
         log.info("New asset is created with symbol: {}", asset.getSymbol());
         return asset;
