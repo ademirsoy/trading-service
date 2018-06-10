@@ -8,7 +8,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -18,8 +17,7 @@ import java.math.BigDecimal;
 public class Trade extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "trade_gen")
-    @SequenceGenerator(name = "trade_gen", sequenceName = "TRADE_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String symbol;

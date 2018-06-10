@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -16,8 +15,7 @@ import java.math.BigDecimal;
 public class FinancialAsset extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "asset_gen")
-    @SequenceGenerator(name = "asset_gen", sequenceName = "ASSET_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String symbol;

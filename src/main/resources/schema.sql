@@ -9,12 +9,6 @@ CREATE TABLE IF NOT EXISTS financial_asset
 	constraint symbol_uindex unique (symbol)
 );
 
-
-CREATE TABLE IF NOT EXISTS asset_seq
-(
-	next_val bigint null
-);
-
 CREATE TABLE IF NOT EXISTS trade
 (
 	id bigint auto_increment primary key,
@@ -24,11 +18,5 @@ CREATE TABLE IF NOT EXISTS trade
 	type varchar(16) null,
 	create_date datetime,
 	update_date datetime
-);
-
-
-CREATE TABLE IF NOT EXISTS trade_seq
-(
-	next_val bigint null
 );
 
