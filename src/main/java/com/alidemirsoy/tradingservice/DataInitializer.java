@@ -32,6 +32,7 @@ public class DataInitializer implements ApplicationRunner {
 
     private void insertIfNotExists(InitialMarketDataProperties.Asset asset) {
         try {
+            log.info("Initial data: {}, {}, {}", asset.getSymbol(), asset.getRate(), asset.getSpread());
             financialAssetRepository.insert(asset.getSymbol(), asset.getRate(), asset.getSpread());
         } catch (Exception e) {
             log.warn("Asset table is already initialized!", e);

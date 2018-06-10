@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=devdb
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpassword
+  trading-service:
+    image: tradingservice:latest
+    depends_on:
+      - mysql
+    ports:
+      - 9000:9000
+    environment:
+      - DATABASE_HOST=mysql
+      - DATABASE_USER=dbuser
+      - DATABASE_PASSWORD=dbpassword
+      - DATABASE_NAME=devdb
+      - DATABASE_PORT=3306

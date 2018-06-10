@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS financial_asset
 (
 	id bigint auto_increment primary key,
-	asset decimal(19,2) null,
+	rate decimal(19,2) null,
 	spread double null,
 	symbol varchar(64) null,
 	create_date datetime,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS asset_seq
 CREATE TABLE IF NOT EXISTS trade
 (
 	id bigint auto_increment primary key,
-	asset decimal(19,2) null,
+	rate decimal(19,2) null,
 	amount bigint,
 	symbol varchar(64) null,
 	type varchar(16) null,
