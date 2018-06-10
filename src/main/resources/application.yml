@@ -1,0 +1,52 @@
+spring:
+  application.name: trading-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/devdb?useSSL=false&allowPublicKeyRetrieval=true
+    username: dbuser
+    password: dbpassword
+    initialization-mode: always
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: validate
+
+server:
+  port: 9000
+
+api.security:
+  username: admin
+  password: password
+
+initialize:
+  rates:
+    - symbol: AAL.L
+      rate: ${random.int[1,1000]}
+      spread: 0.5
+    - symbol: BP.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: BT.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: HSBA.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: KGF.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: NXT.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: RBS.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: SGE.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: SKY.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
+    - symbol: STAN.L
+      rate: ${random.int[1,1000]}
+      spread: 0.3
