@@ -18,19 +18,19 @@ public class TradingServiceSecurityConfiguration extends WebSecurityConfigurerAd
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.
-                csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/login/*").permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and().httpBasic();
+        http
+            .csrf().disable()
+            .authorizeRequests()
+            .antMatchers("/login/*").permitAll()
+            .anyRequest().fullyAuthenticated()
+            .and().httpBasic();
     }
 
     /**
      * Basic Authentication is used for a default single user.
      * Default username and password is taken from the configuration.
-     * Role based authorization is not implemented for the scope of this application
-     * @param auth
+     * Role based authorization is not implemented for the scope of this application.
+     *
      * @throws Exception This is thrown when an unexpected error occurs during setup
      */
     @Autowired

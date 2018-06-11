@@ -9,8 +9,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-
 @Slf4j
 @Component
 public class DataInitializer implements ApplicationRunner {
@@ -42,10 +40,8 @@ public class DataInitializer implements ApplicationRunner {
     private void insertIfNotExists(InitialMarketDataProperties.Asset asset) {
         try {
             //Rate value is provided from the configuration as a random integer.
-            //Random decimal points are added to the read value, to make simulation more realistic.
-            BigDecimal rate = asset.getRate().add(Math.random());
-            log.info("Initial data: {}, {}, {}", asset.getSymbol(), rate, asset.getSpread());
-            financialAssetRepository.insert(asset.getSymbol(), rate, asset.getSpread());
+            log.info("Initial data: {}, {}, {}", asset.getSymbol(), asset.getRate(), asset.getSpread());
+            financialAssetRepository.insert(asset.getSymbol(), asset.getRate(), asset.getSpread());
         } catch (Exception e) {
             log.warn("Asset table is already initialized!", e);
         }
