@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Reads the list of symbols and the initial market values from configuration
+ * Spread value is required to be less than 1,
+ * and rate value is required to be more than 1.
  * @author Ali Demirsoy
  */
 @Data

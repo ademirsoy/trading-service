@@ -42,7 +42,7 @@ public class FinancialAssetController {
     }
 
     @PatchMapping(path = "/{id}")
-    public FinancialAssetResponseDto update(@RequestBody @Validated SpreadUpdateRequestDto updateRequestDto, @PathVariable Long id) {
+    public FinancialAssetResponseDto updateSpread(@RequestBody @Validated SpreadUpdateRequestDto updateRequestDto, @PathVariable Long id) {
         FinancialAssetResponseDto asset = financialAssetService.updateSpread(id, updateRequestDto);
         log.info("Spread value updated for symbol: {}", asset.getSymbol());
         return asset;

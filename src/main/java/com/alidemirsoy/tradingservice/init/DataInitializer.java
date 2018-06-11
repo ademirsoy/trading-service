@@ -32,7 +32,6 @@ public class DataInitializer implements ApplicationRunner {
      */
     @Override
     public void run(ApplicationArguments args) {
-        //TODO javadoc yaz
         if (financialAssetRepository.count() == 0) {
             initialMarketDataProperties.getAssets().forEach(this::insertIfNotExists);
         }
@@ -41,6 +40,7 @@ public class DataInitializer implements ApplicationRunner {
     private void insertIfNotExists(InitialMarketDataProperties.Asset asset) {
         try {
             log.info("Initial data: {}, {}, {}", asset.getSymbol(), asset.getRate(), asset.getSpread());
+            //Rate value is provided from the configuration as a random integer.
             financialAssetRepository.insert(asset.getSymbol(), asset.getRate(), asset.getSpread());
         } catch (Exception e) {
             log.warn("Asset table is already initialized!", e);

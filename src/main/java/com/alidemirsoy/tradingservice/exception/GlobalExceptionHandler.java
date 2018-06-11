@@ -37,7 +37,7 @@ class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResponse handleRequestNotReadableException(HttpMessageNotReadableException ex) {
         log.warn("Request format is not valid: " + ex.getMessage(), ex);
-        return new ErrorResponse("request.validation.failed", ex.getMessage());
+        return new ErrorResponse("request.format.invalid", ex.getMessage());
     }
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

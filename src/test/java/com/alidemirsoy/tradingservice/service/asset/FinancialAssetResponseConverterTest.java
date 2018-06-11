@@ -24,7 +24,7 @@ public class FinancialAssetResponseConverterTest {
         FinancialAsset asset = new FinancialAsset();
         asset.setId(5L);
         asset.setSymbol("AAL.L");
-        asset.setSpread(0.5);
+        asset.setSpread(0.555);
         asset.setRate(new BigDecimal("100"));
 
         //When
@@ -32,9 +32,9 @@ public class FinancialAssetResponseConverterTest {
 
         //Then
         assertThat(actual.getSymbol()).isEqualTo("AAL.L");
-        assertThat(actual.getSpread()).isEqualTo(0.5);
+        assertThat(actual.getSpread()).isEqualTo(0.555);
         assertThat(actual.getRate()).isEqualTo(new BigDecimal("100"));
-        assertThat(actual.getBid()).isEqualTo(new BigDecimal("99.5"));
-        assertThat(actual.getOffer()).isEqualTo(new BigDecimal("100.5"));
+        assertThat(actual.getBid()).isEqualTo(new BigDecimal("99.45"));
+        assertThat(actual.getOffer()).isEqualTo(new BigDecimal("100.56"));
     }
 }

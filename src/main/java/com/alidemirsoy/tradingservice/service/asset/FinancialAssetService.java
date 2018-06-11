@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +54,7 @@ public class FinancialAssetService {
 
         validateSpread(updateRequestDto.getSpread(), existingAsset.getRate().doubleValue());
 
-        existingAsset.setSpread(updateRequestDto.getSpread());
+        existingAsset.setSpread(round(updateRequestDto.getSpread()));
         existingAsset.setUpdateDate(LocalDateTime.now());
         FinancialAsset savedFinancialAsset = financialAssetRepository.save(existingAsset);
         return financialAssetResponseConverter.convert(savedFinancialAsset);
@@ -62,5 +64,9 @@ public class FinancialAssetService {
         if (spread >= rate) {
             throw new BadRequestException("Spread value cannot be larger than or equal to the rate value", "error.spread.invalid");
         }
+    }
+
+    private Double round(Double value) {
+        return new BigDecimal(value).setScale(2, RoundingMode.HALF_DOWN).doubleValue();
     }
 }

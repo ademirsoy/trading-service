@@ -5,6 +5,7 @@ import com.alidemirsoy.tradingservice.dto.asset.FinancialAssetResponseDto;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Service
 public class FinancialAssetResponseConverter {
@@ -15,8 +16,10 @@ public class FinancialAssetResponseConverter {
         responseDto.setSymbol(financialAsset.getSymbol());
         responseDto.setRate(financialAsset.getRate());
         responseDto.setSpread(financialAsset.getSpread());
-        responseDto.setBid(financialAsset.getRate().subtract(new BigDecimal(financialAsset.getSpread())));
-        responseDto.setOffer(financialAsset.getRate().add(new BigDecimal(financialAsset.getSpread())));
+        BigDecimal bid = financialAsset.getRate().subtract(new BigDecimal(financialAsset.getSpread()));
+        BigDecimal offer = financialAsset.getRate().add(new BigDecimal(financialAsset.getSpread()));
+        responseDto.setBid(bid.setScale(2, RoundingMode.CEILING));
+        responseDto.setOffer(offer.setScale(2, RoundingMode.CEILING));
         responseDto.setCreateDate(financialAsset.getCreateDate());
         responseDto.setUpdateDate(financialAsset.getUpdateDate());
 
