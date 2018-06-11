@@ -20,7 +20,7 @@ class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResponse handleBadRequestException(BadRequestException ex) {
         log.warn("Request is not validated, " + ex.getMessage(), ex);
-        return new ErrorResponse(ex.getCode(), ex.getMessage());
+        return new ErrorResponse(ex.getCode(), ex.getMessage(), HttpStatus.BAD_REQUEST.value());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -29,7 +29,7 @@ class GlobalExceptionHandler {
     public ErrorResponse handleRequestValidationException(MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult().getFieldError().getDefaultMessage();
         log.warn("Request is not validated: " + message, ex);
-        return new ErrorResponse("request.validation.failed", message);
+        return new ErrorResponse("request.validation.failed", message, HttpStatus.BAD_REQUEST.value());
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
@@ -37,7 +37,7 @@ class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResponse handleRequestNotReadableException(HttpMessageNotReadableException ex) {
         log.warn("Request format is not valid: " + ex.getMessage(), ex);
-        return new ErrorResponse("request.format.invalid", ex.getMessage());
+        return new ErrorResponse("request.format.invalid", ex.getMessage(), HttpStatus.BAD_REQUEST.value());
     }
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
@@ -45,12 +45,13 @@ class GlobalExceptionHandler {
     @ResponseBody
     public ErrorResponse handleInvalidCredentials(BadCredentialsException ex) {
         log.warn("Invalid credentials!");
-        return new ErrorResponse("invalid.credentials", ex.getMessage());
+        return new ErrorResponse("invalid.credentials", ex.getMessage(), HttpStatus.UNAUTHORIZED.value());
     }
 
     @Data
     public static class ErrorResponse {
         private final String code;
         private final String message;
+        private final int status;
     }
 }
