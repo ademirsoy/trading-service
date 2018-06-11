@@ -16,6 +16,9 @@ Services take request DTOs, interact with repository and pass response DTOs to C
 Conversions from Entity to DTOs (vice versa) are performed at this level. 
 ModelMapper library is mostly used for simplicity. Custom converters are used when necessary.
 
+- Randomized market data is initialized on startup via reading from the configuration file.
+If multiple nodes are started for backend, only the first node will initialize the data.
+
 ### Exception Handling:
 Since Trading Service is mostly a CRUD application and business logic is not complex,
 exceptions are mostly handled for request validation purposes.
@@ -43,4 +46,18 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 ### Login Credentials
 Default username is "**_admin_**" and password is "**_password_**". 
 These values can be changed in application.yml file.
- 
+
+### Assumptions
+
+- There's only one user with for the application that has access to all pages and resources.
+The user credentials are stored in the application.yml file. 
+Hence there's no role based authorization for the scope of this project.
+
+- The persisted trade information does not include the user who actually buys or sells assets.
+This is omitted due to simplicity and having a single user, 
+which is mainly used as an API key and API secret.
+
+- Asset rates are only initialized at the beginning and assumed they do not change later.
+Only the spread values can change.
+
+- The balance for selling and buying assets are assumed as unlimited.
