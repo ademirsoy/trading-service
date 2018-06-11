@@ -28,25 +28,25 @@ initialize:
       spread: 0.3
     - symbol: BT.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.2
     - symbol: HSBA.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.1
     - symbol: KGF.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.6
     - symbol: NXT.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.7
     - symbol: RBS.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.8
     - symbol: SGE.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.9
     - symbol: SKY.L
       rate: ${random.int[1,1000]}
       spread: 0.3
     - symbol: STAN.L
       rate: ${random.int[1,1000]}
-      spread: 0.3
+      spread: 0.5

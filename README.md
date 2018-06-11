@@ -35,5 +35,9 @@ To start the project and its dependencies go to folder that has docker-compose.y
 
 ### `docker-compose up`
 
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+
+####Login Credentials
+Default username is "**_admin_**" and password is "**_password_**". 
+These values can be changed in application.yml file.
  
