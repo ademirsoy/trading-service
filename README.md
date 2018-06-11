@@ -37,6 +37,9 @@ To start the project and its dependencies go to folder that has docker-compose.y
 
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
+**NOTE**: Docker compose might fail due to mysql not being ready before Spring Application.
+In this case stopping docker compose and rerunning it will solve the problem.
+
 ####Login Credentials
 Default username is "**_admin_**" and password is "**_password_**". 
 These values can be changed in application.yml file.

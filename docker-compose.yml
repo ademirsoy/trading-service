@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    image: nginx:latest
+    image: alidemirsoy/nginx:final
     ports:
       - 8080:8080
     links:
@@ -17,14 +17,10 @@ services:
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD=dbpassword
   trading-service:
-    image: tradingservice:latest
+    image: alidemirsoy/tradingservice:final
+    restart: always
     depends_on:
       - mysql
     ports:
       - 9000:9000
-    environment:
-      - DATABASE_HOST=mysql
-      - DATABASE_USER=dbuser
-      - DATABASE_PASSWORD=dbpassword
-      - DATABASE_NAME=devdb
-      - DATABASE_PORT=3306
+
