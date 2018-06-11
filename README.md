@@ -16,7 +16,7 @@ Services take request DTOs, interact with repository and pass response DTOs to C
 Conversions from Entity to DTOs (vice versa) are performed at this level. 
 ModelMapper library is mostly used for simplicity. Custom converters are used when necessary.
 
-###Exception Handling:
+### Exception Handling:
 Since Trading Service is mostly a CRUD application and business logic is not complex,
 exceptions are mostly handled for request validation purposes.
 Java Bean Validation is used to validate Request DTOs.
@@ -25,12 +25,12 @@ handler via Spring @ControllerAdvice.
 
 ## Usage
 
-###Build
+### Build
 The project can be built via maven, and the below command will check the project for code quality
 and output the result _checkstyle.html_ file under target directory
 ### `mvn clean install`
 
-###Run
+### Run
 To start the project and its dependencies go to folder that has docker-compose.yml and run:
 
 ### `docker-compose up`
@@ -40,7 +40,7 @@ In this case stopping docker compose and rerunning it will solve the problem.
 
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-###Login Credentials
+### Login Credentials
 Default username is "**_admin_**" and password is "**_password_**". 
 These values can be changed in application.yml file.
  
